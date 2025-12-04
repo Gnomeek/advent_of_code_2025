@@ -1,6 +1,6 @@
 import sys
 
-def read_input(file_path: str) -> str:
+def read_input(file_path: str) -> list[list[int]]:
     banks = []
     with open(file_path, "r") as file:
         for line in file.readlines():
