@@ -11,9 +11,22 @@ def read_input(file_path: str) -> list[list[str]]:
 
 def solve_pt1(grid: list[list[str]]) -> int:
     res = 0
+    beam_idx = set()
+    for i, c in enumerate(grid[0]):
+        if c == "S":
+            beam_idx.add(i)
+            break
+    for i in range(len(grid) - 1):
+        for j in beam_idx.copy():
+            if grid[i+1][j] == "^":
+                res += 1
+                beam_idx.remove(j)
+                beam_idx.add(j-1)
+                beam_idx.add(j+1)
     return res
 
 def solve_pt2(grid: list[list[str]]) -> int:
+    # dfs backtracking
     res = 0
     return res
 
