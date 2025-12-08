@@ -1,3 +1,4 @@
+from collections import defaultdict
 import sys
 
 def read_input(file_path: str) -> list[list[str]]:
@@ -26,9 +27,22 @@ def solve_pt1(grid: list[list[str]]) -> int:
     return res
 
 def solve_pt2(grid: list[list[str]]) -> int:
-    # dfs backtracking
-    res = 0
-    return res
+    path_count = {}
+    for j, c in enumerate(grid[0]):
+        if c == "S":
+            path_count[j] = 1
+            break
+    for i in range(len(grid) - 1):
+        next_count = defaultdict(int)
+        for pos, count in path_count.items():
+            next_char = grid[i+1][pos]
+            if next_char == "^":
+                next_count[pos-1] += count
+                next_count[pos+1] += count
+            else:
+                next_count[pos] += count
+        path_count = next_count
+    return sum(path_count.values())
 
 
 if __name__ == "__main__":
