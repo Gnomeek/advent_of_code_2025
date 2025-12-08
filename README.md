@@ -7,3 +7,21 @@ This repo is grouped by day, each day folder contains a sample input and the sol
 The real input for each day is added in `.gitignore` on purpose.
 
 Enjoy coding.
+
+# Status
+
+| Day | Part 1 | Part 2 |
+|-----|----|----|
+| 01  | ✅     |  ✅     |
+| 02  | ✅     |  ✅     |
+| 03  | ✅     |  ✅     |
+| 04  | ✅     |  ✅     |
+| 05  | ✅     |  ✅     |
+| 06  | ✅     |  ✅     |
+| 07  | ✅     |  ✅     |
+| 08  | ⏱️     |  ⏱️     |
+| 09  | ⏳     |  ⏳     |
+| 10  | ⏳     |  ⏳     |
+| 11  | ⏳     |  ⏳     |
+| 12  | ⏳     |  ⏳     |
+
