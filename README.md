@@ -2,7 +2,11 @@
 
 This repo is used to store my `Python` solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
-This repo is grouped by day, each day folder contains a sample input and the solver.
+This repo is grouped by day, every folder contains a sample input and solver. Solver is written in vanilla `Python` without dependencies except stdlib.
+
+Run testcase by `cd dayn; python3 main.py test`
+
+Run solver on real input by `cd dayn; python3 main.py`
 
 The real input for each day is added in `.gitignore` on purpose.
 
