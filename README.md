@@ -2,11 +2,11 @@
 
 This repo is used to store my `Python` solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
-This repo is grouped by day, every folder contains a sample input and solver. Solver is written in vanilla `Python` without dependencies except stdlib.
+This repo is grouped by day, every folder contains a sample input and solver. Solver is written in vanilla `Python` without dependencies except stdlib(mostly).
 
-Run testcase by `cd dayn; python3 main.py test`
+Run solver on testcase and real input by `cd dayn; python3 main.py test` and `cd dayn; python3 main.py`, respectively.
 
-Run solver on real input by `cd dayn; python3 main.py`
+This repo is `uv` friendly so you can use `cd dayn; uv run main.py` and `cd dayn; uv run main.py test` for those solvers that requires dependencies other than stdlib. `uv run` won't pollute your python env and you don't have to create venv.
 
 The real input for each day is added in `.gitignore` on purpose.
 
@@ -25,7 +25,7 @@ Enjoy coding.
 | 07  | ✅     |  ✅     | `DP` |
 | 08  | ✅     |  ✅     | `Union Find`, `heap` |
 | 09  | ✅     |  ✅     | `Flooding` |
-| 10  | ⏱️     |  ⏱️     |  |
+| 10  | ✅     |  ✅     | `LP`, `BFS` |
 | 11  | ⏳     |  ⏳     |  |
 | 12  | ⏳     |  ⏳     |  |
 
