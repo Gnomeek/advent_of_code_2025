@@ -3,46 +3,11 @@ import sys
 from collections import deque
 
 class Machine:
-    curr: list[int] = []
-    target: list[int] = []
-    ops: list[list[int]] = []
-    joltage: list[int] = []
-    used_ops: list[bool] = []
-
-
-    def __init__(self, target, ops, joltage, curr=None, used_ops=None):
-        self.curr = ["."] * len(target) if not curr else curr
-        self.target = target
+    def __init__(self, target, ops, joltage):
+        self.curr = "." * len(target)
+        self.target = target              
         self.ops = ops
-        self.used_ops = [False] * len(ops) if not used_ops else used_ops
         self.joltage = joltage
-
-    
-    def can_flip_by_op(self, op_idx) -> bool:
-        return not self.used_ops[op_idx]
-
-
-    def flip_by_op(self, op_idx: int) -> 'Machine':
-        curr = self.curr.copy()
-        used_ops = self.used_ops.copy()
-        for i in self.ops[op_idx]:
-            if curr[i] == ".":
-                curr[i] = "#"
-            else:
-                curr[i] = "."
-        for idx in range(len(used_ops)):
-            if idx == op_idx:
-                used_ops[idx] = True
-            else:
-                used_ops[idx] = False
-        return Machine(self.target, self.ops, self.joltage, curr, used_ops)
-    
-
-    def is_reach_target(self) -> bool:
-        for c, t in zip(self.curr, self.target):
-            if c != t:
-                return False
-        return True
 
 
     def __str__(self):
@@ -62,7 +27,7 @@ def read_input(file_path: str) -> list[Machine]:
     with open(file_path, "r") as file:
         for line in file.readlines():
             parts = line.strip().split(" ")
-            target = list(parts[0][1:-1])
+            target = parts[0][1:-1]
             joltage = [int(i) for i in parts[-1][1:-1].split(",")]
             ops = []
             for part in parts[1:-1]:
@@ -74,28 +39,37 @@ def read_input(file_path: str) -> list[Machine]:
     return machines
 
 def solve_pt1(machines: list[Machine]) -> int:
-    res = 0
-    for idx, machine in enumerate(machines):
-        temp = pt1(machine)
-        print(idx, temp)
-        res += temp
-    return res
+    return sum([pt1(m) for m in machines])
 
 def pt1(machine: Machine) -> int:
-    res = 0
-    queue: list[Machine] = [machine]
+    initial = machine.curr
+    target = machine.target
+
+    if initial == target:
+        return 0
+
+    visited = {initial}
+    queue = deque([(initial, 0)])
+
     while queue:
-        res += 1
-        size = len(queue)
-        for _ in range(size):
-            curr = queue.pop(0)
-            for idx, op in enumerate(curr.ops):
-                if not curr.can_flip_by_op(idx):
-                    continue
-                fliped = curr.flip_by_op(idx)
-                queue.append(fliped)
-                if fliped.is_reach_target():
-                    return res 
+        curr, steps = queue.popleft()
+
+        for op in machine.ops:
+            state = list(curr)
+            for i in op:
+                state[i] = '#' if state[i] == '.' else '.'
+            next_state = "".join(state)
+
+            if next_state in visited:
+                continue
+
+            visited.add(next_state)
+            if next_state == target:
+                return steps + 1
+
+            queue.append((next_state, steps + 1))
+
+    return -1 
 
 
 def solve_pt2(machines: list[Machine]) -> int:
