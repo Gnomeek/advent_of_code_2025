@@ -8,6 +8,8 @@ Run solver on testcase and real input by `cd dayn; python3 main.py test` and `cd
 
 This repo is `uv` friendly so you can use `cd dayn; uv run main.py` and `cd dayn; uv run main.py test` for those solvers that requires dependencies other than stdlib. `uv run` won't pollute your python env and you don't have to create venv.
 
+Sometimes the test input may differ from part1 and part2 so it's essential to use `cd dayn; uv run main.py test pt2` or `cd dayn; python3 main.py test pt2` for part2 testing.
+
 The real input for each day is added in `.gitignore` on purpose.
 
 Enjoy coding.
@@ -26,6 +28,6 @@ Enjoy coding.
 | 08  | ✅     |  ✅     | `Union Find`, `heap` |
 | 09  | ✅     |  ✅     | `Flooding` |
 | 10  | ✅     |  ✅     | `LP`, `BFS` |
-| 11  | ⏳     |  ⏳     |  |
+| 11  | ✅     |  ✅     | `Graph`, `DFS` |
 | 12  | ⏳     |  ⏳     |  |
 
