@@ -2,6 +2,8 @@ from collections import defaultdict
 import sys
 
 
+START, END = "you", "out"
+
 def read_input(file_path: str) -> dict[str, list[str]]:
     graph = defaultdict(list)
     with open(file_path, "r") as file:
@@ -11,7 +13,18 @@ def read_input(file_path: str) -> dict[str, list[str]]:
     return graph
 
 def solve_pt1(graph: dict[str, list[str]]) -> int:
-    return 0
+    res = 0
+    queue = [START]
+    while queue:
+        size = len(queue)
+        for _ in range(size):
+            curr = queue.pop(0)
+            for adj in graph[curr]:
+                if adj == END:
+                    res += 1
+                else:
+                    queue.append(adj)
+    return res
 
 
 def solve_pt2(graph: dict[str, list[str]]) -> int:
