@@ -1,5 +1,7 @@
 # Advent of Code 2025 with Python
 
+![full_cal](assets/full_cal.png)
+
 This repo is used to store my `Python` solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
 This repo is grouped by day, every folder contains sample input and solver. Solver is written in vanilla `Python` without dependencies except stdlib(mostly).
@@ -29,5 +31,5 @@ Enjoy coding.
 | 09  | ✅     |  ✅     | `Flooding` |
 | 10  | ✅     |  ✅     | `LP`, `BFS` |
 | 11  | ✅     |  ✅     | `Graph`, `DFS` |
-| 12  | ⏱️     |  ⏱️     |  |
+| 12  | ✅     |  ✅     | `HACK` |
 
